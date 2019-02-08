@@ -1,0 +1,123 @@
+type Accounting {
+  id: ID! @id
+  customer: Customer!
+  date: DateTime!
+  finalPrice: Float!
+  paid: Boolean!
+  paymentType: String!
+}
+
+type Activity {
+  id: ID! @id
+  name: String!
+  description: String!
+  hotel: Hotel!
+  endHour: DateTime!
+  startHour: DateTime!
+}
+
+type Booking {
+  id: ID! @id
+  bookedRooms: [Room!]! @relation(link: INLINE)
+  comment: String
+  customer: Customer!
+  endDate: DateTime!
+  startDay: DateTime!
+  price: Float!
+}
+
+type Customer {
+  id: ID! @id
+  accountings: [Accounting!]! @relation(link: INLINE)
+  bookings: [Booking!]! @relation(link: INLINE)
+  email: String!
+  identificationDocument: String!
+  name: String!
+  orders: [Order!]! @relation(link: INLINE)
+  phoneNumber: String!
+  reports: [Report!]! @relation(link: INLINE)
+  surname: String!
+}
+
+type Hotel {
+  id: ID! @id
+  activities: [Activity!]! @relation(link: INLINE)
+  address: String!
+  description: String!
+  email: String!
+  name: String!
+  phoneNumber: String!
+  products: [Product!]! @relation(link: INLINE)
+  rooms: [Room!]! @relation(link: INLINE)
+  services: [Service!]! @relation(link: INLINE)
+  users: [User!]! @relation(link: INLINE)
+  website: String
+}
+
+type Order {
+  id: ID! @id
+  comment: String
+  customer: Customer!
+  date: DateTime!
+  finalPrice: Float!
+  productsOrdered: [ProductOrdered!]! @relation(link: INLINE)
+  status: String!
+  statusComment: String
+}
+
+type Product {
+  id: ID! @id
+  available: Boolean!
+  name: String!
+  description: String!
+  hotel: Hotel!
+  price: Float!
+  productType: String!
+  productsOrdered: [ProductOrdered!]! @relation(link: INLINE)
+}
+
+type ProductOrdered {
+  id: ID! @id
+  comments: String
+  price: Float!
+  quantity: Int!
+
+  productId: ID!
+  product: Product!
+
+  orderId: ID!
+  order: Order!
+}
+
+type Report {
+  id: ID! @id
+  customer: Customer!
+  date: DateTime!
+  description: String!
+  status: String!
+}
+
+type Room {
+  id: ID! @id
+  bookedRooms: [Booking!]!
+  floorNumber: Int!
+  hotel: Hotel!
+  price: Float!
+  roomNumber: Int!
+  roomType: String!
+}
+
+type Service {
+  id: ID! @id
+  description: String!
+  name: String!
+  hotel: Hotel!
+}
+
+type User {
+  id: ID! @id
+  hotel: Hotel!
+  name: String!
+  surname: String!
+  userType: String!
+}
