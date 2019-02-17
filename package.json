@@ -4,14 +4,22 @@
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
+    "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
+    "build": "rimraf dist && tsc"
   },
   "dependencies": {
+    "bcryptjs": "2.4.3",
     "graphql-yoga": "1.17.4",
-    "prisma-client-lib": "1.26.6"
+    "jsonwebtoken": "8.4.0"
   },
   "devDependencies": {
-    "prisma": "1.26.4",
+    "@types/bcryptjs": "2.4.2",
+    "@types/node": "11.9.4",
+    "dotenv-cli": "1.4.0",
+    "nodemon": "1.18.10",
+    "prisma": "1.26.6",
+    "rimraf": "2.6.3",
     "ts-node": "8.0.2",
     "typescript": "3.3.3"
   }
