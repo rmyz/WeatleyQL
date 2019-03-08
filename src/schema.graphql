@@ -1,0 +1,43 @@
+# import Accounting, AccountingCreateInput, AccountingUpdateInput, Activity, Booking, Customer, Hotel, Order, Product, ProductOrdered, Report, Room, Service, User from "./generated/prisma.graphql";
+type Query {
+  accounting(id: ID!): Accounting!
+  accountings: [Accounting!]!
+  activity(id: ID!): Activity!
+  activities: [Activity!]!
+  booking(id: ID!): Booking!
+  bookings: [Booking!]!
+  customer(id: ID!): Customer!
+  customers: [Customer!]!
+  hotel(id: ID!): Hotel!
+  hotels: [Hotel!]!
+  order(id: ID!): Order!
+  orders: [Order!]!
+  product(id: ID!): Product!
+  products: [Product!]!
+  report(id: ID!): Report!
+  reports: [Report!]!
+  room(id: ID!): Room!
+  rooms: [Room!]!
+  service(id: ID!): Service!
+  services: [Service!]!
+  user(id: ID!): User!
+  users: [User!]!
+}
+
+type Mutation {
+  signup(email: String!, password: String!, name: String!): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+
+  createAccounting(input: AccountingCreateInput!): Accounting!
+  modifyAccounting(id: ID!, input: AccountingUpdateInput!): Accounting!
+  deleteAccounting(id: ID!): Accounting!
+
+  # createActivity(newActivity: Activity!): Activity!
+  # modifyActivity(modifiedActivity: Activity!): Activity!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+

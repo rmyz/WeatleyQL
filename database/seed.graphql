@@ -1,3 +1,5 @@
 mutation {
-	
+	acc1: createAccounting(data: {date: "date", finalPrice: 345.34, paid: true, paymentType: "card", customer: {}}) {
+        id
+    }
 }
