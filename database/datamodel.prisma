@@ -1,6 +1,6 @@
 type Accounting {
   id: ID! @id
-  customer: Customer!
+  customer: Customer! @relation(link: INLINE)
   date: DateTime!
   finalPrice: Float!
   paid: Boolean!
@@ -11,16 +11,16 @@ type Activity {
   id: ID! @id
   name: String!
   description: String!
-  hotel: Hotel!
+  hotel: Hotel! @relation(link: INLINE)
   endHour: DateTime!
   startHour: DateTime!
 }
 
 type Booking {
   id: ID! @id
-  bookedRooms: [Room!]! @relation(link: INLINE)
+  bookedRooms: [BookedRoom!]!
   comment: String
-  customer: Customer!
+  customer: Customer! @relation(link: INLINE)
   endDate: DateTime!
   startDay: DateTime!
   price: Float!
@@ -28,39 +28,39 @@ type Booking {
 
 type Customer {
   id: ID! @id
-  accountings: [Accounting!]! @relation(link: INLINE)
-  bookings: [Booking!]! @relation(link: INLINE)
-  email: String!
+  accountings: [Accounting!]!
+  bookings: [Booking!]! 
+  email: String! @unique
   identificationDocument: String!
   name: String!
-  orders: [Order!]! @relation(link: INLINE)
+  orders: [Order!]!
   phoneNumber: String!
-  reports: [Report!]! @relation(link: INLINE)
+  reports: [Report!]!
   surname: String!
 }
 
 type Hotel {
   id: ID! @id
-  activities: [Activity!]! @relation(link: INLINE)
+  activities: [Activity!]!
   address: String!
   description: String!
-  email: String!
+  email: String! @unique
   name: String!
   phoneNumber: String!
-  products: [Product!]! @relation(link: INLINE)
-  rooms: [Room!]! @relation(link: INLINE)
-  services: [Service!]! @relation(link: INLINE)
-  users: [User!]! @relation(link: INLINE)
+  products: [Product!]! 
+  rooms: [Room!]! 
+  services: [Service!]! 
+  users: [User!]! 
   website: String
 }
 
 type Order {
   id: ID! @id
   comment: String
-  customer: Customer!
+  customer: Customer! @relation(link: INLINE)
   date: DateTime!
   finalPrice: Float!
-  productsOrdered: [ProductOrdered!]! @relation(link: INLINE)
+  productsOrdered: [ProductOrdered!]!
   status: String!
   statusComment: String
 }
@@ -70,10 +70,10 @@ type Product {
   available: Boolean!
   name: String!
   description: String!
-  hotel: Hotel!
+  hotel: Hotel! @relation(link: INLINE)
   price: Float!
   productType: String!
-  productsOrdered: [ProductOrdered!]! @relation(link: INLINE)
+  productsOrdered: [ProductOrdered!]!
 }
 
 type ProductOrdered {
@@ -83,15 +83,15 @@ type ProductOrdered {
   quantity: Int!
 
   productId: ID!
-  product: Product!
+  product: Product! @relation(link: INLINE)
 
   orderId: ID!
-  order: Order!
+  order: Order! @relation(link: INLINE)
 }
 
 type Report {
   id: ID! @id
-  customer: Customer!
+  customer: Customer! @relation(link: INLINE)
   date: DateTime!
   description: String!
   status: String!
@@ -99,24 +99,34 @@ type Report {
 
 type Room {
   id: ID! @id
-  bookedRooms: [Booking!]!
+  bookedRooms: [BookedRoom!]!
   floorNumber: Int!
-  hotel: Hotel!
+  hotel: Hotel! @relation(link: INLINE)
   price: Float!
   roomNumber: Int!
   roomType: String!
+}
+
+type BookedRoom {
+  id: ID! @id
+
+  roomId: ID!
+  room: Room! @relation(link: INLINE)
+
+  bookingId: ID!
+  booking: Booking! @relation(link: INLINE)
 }
 
 type Service {
   id: ID! @id
   description: String!
   name: String!
-  hotel: Hotel!
+  hotel: Hotel! @relation(link: INLINE)
 }
 
 type User {
   id: ID! @id
-  hotel: Hotel!
+  hotel: Hotel! @relation(link: INLINE)
   name: String!
   surname: String!
   userType: String!

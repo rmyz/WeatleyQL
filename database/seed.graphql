@@ -1,5 +1,15 @@
 mutation {
-	acc1: createAccounting(data: {date: "date", finalPrice: 345.34, paid: true, paymentType: "card", customer: {}}) {
-        id
-    }
+  acc1: createAccounting(data: {date: "2019-01-02", paid: true, paymentType: "cash",finalPrice: 24.35, customer: {create: {name: "John", surname: "Doe", email: "john@gmail.com", identificationDocument: "34529871Z", phoneNumber: "698532142" }}}) {
+    id
+  }
+  acc2: createAccounting(data: {date: "2019-01-02", paid: true, paymentType: "cash",finalPrice: 24.35, customer: {connect: {email:"john@gmail.com" }}}) {
+    id
+  }
+  act1: createActivity(data: {name:"Free mojitos", description: "Free mojitos at the pool", startHour: "2019-01-02T17:00", endHour:"2019-01-02T18:00", hotel: {create: {name: "Hotel The Bay", description:"The Bay hotel from las vegas", address: "Las vegas", email:"thebay@gmail.com", phoneNumber: "49532134", website: "thebay.com"}}}) {
+    id
+  }
+  act2: createActivity(data: {name:"Happy hour", description: "Happy hour at the bar", startHour: "2019-01-02T19:00", endHour:"2019-01-02T20:00", hotel: {connect: {email:"thebay@gmail.com"}}}) {
+    id
+  }
+  
 }
