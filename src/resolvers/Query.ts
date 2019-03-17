@@ -43,6 +43,12 @@ export const Query = {
     product(parent, { id }, context: Context) {
         return context.prisma.product({ id });
     },
+    productOrdereds(parent, args, context: Context) {
+        return context.prisma.productOrdereds();
+    },
+    productOrdered(parent, { id }, context: Context) {
+        return context.prisma.productOrdered({ id });
+    },
     reports(parent, args, context: Context) {
         return context.prisma.reports();
     },
@@ -54,6 +60,12 @@ export const Query = {
     },
     room(parent, { id }, context: Context) {
         return context.prisma.room({ id });
+    },
+    bookedRooms(parent, args, context: Context) {
+        return context.prisma.bookedRooms();
+    },
+    bookedRoom(parent, { id }, context: Context) {
+        return context.prisma.bookedRoom({ id });
     },
     services(parent, args, context: Context) {
         return context.prisma.services();

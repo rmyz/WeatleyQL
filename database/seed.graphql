@@ -11,5 +11,16 @@ mutation {
   act2: createActivity(data: {name:"Happy hour", description: "Happy hour at the bar", startHour: "2019-01-02T19:00", endHour:"2019-01-02T20:00", hotel: {connect: {email:"thebay@gmail.com"}}}) {
     id
   }
-  
+  boo1: createBooking(data: {startDay: "2019-01-02", endDate: "2019-01-05", price: 210, customer: {connect: {email: "john@gmail.com"}}}) {
+    id
+  }
+  boo2: createBooking(data: {startDay: "2019-01-07", endDate: "2019-01-10", price: 315.75, customer: {connect: {email: "john@gmail.com"}}}) {
+    id
+  }
+  ord1: createOrder(data: {finalPrice: 15.95, date: "2019-01-04", status: "pending", customer: {connect: {email: "john@gmail.com"}}}) {
+    id
+  }
+  ord2: createOrder(data: {finalPrice: 10.45, date: "2019-01-06", status: "delivered", customer: {connect: {email: "john@gmail.com"}}}) {
+    id
+  }
 }
