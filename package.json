@@ -11,16 +11,16 @@
   "dependencies": {
     "bcryptjs": "2.4.3",
     "graphql-yoga": "1.17.4",
-    "jsonwebtoken": "8.4.0"
+    "jsonwebtoken": "8.5.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.2",
-    "@types/node": "11.9.4",
-    "dotenv-cli": "1.4.0",
+    "@types/node": "11.11.6",
+    "dotenv-cli": "2.0.0",
     "nodemon": "1.18.10",
-    "prisma": "1.26.6",
+    "prisma": "1.29.1",
     "rimraf": "2.6.3",
-    "ts-node": "8.0.2",
-    "typescript": "3.3.3"
+    "ts-node": "8.0.3",
+    "typescript": "3.3.4000"
   }
 }
