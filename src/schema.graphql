@@ -1,4 +1,4 @@
-# import Accounting, AccountingCreateInput, AccountingUpdateInput, Activity, Booking, Customer, Hotel, Order, Product, ProductOrdered, Report, Room, Service, User from "./generated/prisma.graphql";
+# import Accounting, AccountingCreateInput, AccountingUpdateInput, Activity, Booking, BookedRoom, Customer, Hotel, Order, Product, ProductOrdered, Report, Room, Service, User from "./generated/prisma.graphql";
 type Query {
   accounting(id: ID!): Accounting!
   accountings: [Accounting!]!
@@ -6,6 +6,8 @@ type Query {
   activities: [Activity!]!
   booking(id: ID!): Booking!
   bookings: [Booking!]!
+  bookedRoom(id: ID!): BookedRoom!
+  bookedRooms: [BookedRoom!]!
   customer(id: ID!): Customer!
   customers: [Customer!]!
   hotel(id: ID!): Hotel!
@@ -14,6 +16,8 @@ type Query {
   orders: [Order!]!
   product(id: ID!): Product!
   products: [Product!]!
+  productOrdered(id: ID!): ProductOrdered!
+  productOrdereds: [ProductOrdered!]!
   report(id: ID!): Report!
   reports: [Report!]!
   room(id: ID!): Room!
