@@ -12,6 +12,6 @@ seed:
 hooks:
   post-deploy:
     - graphql get-schema
-      prisma generate
+    - prisma generate
 
 secret: W34tl3y
