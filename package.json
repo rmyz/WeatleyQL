@@ -6,7 +6,9 @@
   "scripts": {
     "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
     "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc",
+    "prettier": "prettier --config .prettierrc --write \"**/*.{ts,yml}\"",
+    "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.{ts,yml}\""
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
@@ -15,12 +17,13 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.2",
-    "@types/node": "11.11.6",
+    "@types/node": "11.12.2",
     "dotenv-cli": "2.0.0",
     "nodemon": "1.18.10",
-    "prisma": "1.29.1",
+    "prettier": "1.16.4",
+    "prisma": "1.29.2",
     "rimraf": "2.6.3",
     "ts-node": "8.0.3",
-    "typescript": "3.3.4000"
+    "typescript": "3.4.1"
   }
 }
