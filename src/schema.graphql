@@ -1,4 +1,4 @@
-# import Accounting, AccountingCreateInput, AccountingUpdateInput, Activity, Booking, BookedRoom, Customer, Hotel, Order, Product, ProductOrdered, Report, Room, Service, User from "./generated/prisma.graphql";
+# import Accounting, AccountingCreateInput, AccountingUpdateInput, Activity, Booking, BookedRoom, Customer, Hotel, Order, Product, ProductOrdered, Report, Room, Service, User, UserCreateInput from "./generated/prisma.graphql";
 type Query {
   accounting(id: ID!): Accounting!
   accountings: [Accounting!]!
@@ -29,8 +29,9 @@ type Query {
 }
 
 type Mutation {
-  signup(email: String!, password: String!, name: String!): AuthPayload!
+  signup(data: UserCreateInput!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+  createGuestToken(id: ID!): GuestPayload!
 
   createAccounting(input: AccountingCreateInput!): Accounting!
   modifyAccounting(id: ID!, input: AccountingUpdateInput!): Accounting!
@@ -43,5 +44,10 @@ type Mutation {
 type AuthPayload {
   token: String!
   user: User!
+}
+
+type GuestPayload {
+  token: String!
+  customer: Customer!
 }
 

@@ -129,5 +129,7 @@ type User {
   hotel: Hotel! @relation(link: INLINE)
   name: String!
   surname: String!
+  password: String!
+  email: String! @unique
   userType: String!
 }
