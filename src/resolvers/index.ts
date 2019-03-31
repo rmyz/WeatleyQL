@@ -1,6 +1,6 @@
 import { Query } from './Query';
 import { auth } from './Mutation/auth';
-
+import { accounting } from './Mutation/accounting';
 export default {
   Query,
   Node: {
@@ -9,6 +9,7 @@ export default {
     },
   },
   Mutation: {
+    ...accounting,
     ...auth,
   },
 };

@@ -33,8 +33,8 @@ type Mutation {
   login(email: String!, password: String!): AuthPayload!
   createGuestToken(id: ID!): GuestPayload!
 
-  createAccounting(input: AccountingCreateInput!): Accounting!
-  modifyAccounting(id: ID!, input: AccountingUpdateInput!): Accounting!
+  createAccounting(data: AccountingCreateInput!): Accounting!
+  updateAccounting(id: ID!, data: AccountingUpdateInput!): Accounting!
   deleteAccounting(id: ID!): Accounting!
 
   # createActivity(newActivity: Activity!): Activity!

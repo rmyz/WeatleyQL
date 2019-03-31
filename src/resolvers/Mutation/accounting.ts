@@ -4,7 +4,9 @@ export const accounting = {
   async createAccounting(parent, { data }, ctx: Context, info) {
     getUserId(ctx);
 
-    return await ctx.prisma.createAccounting({ ...data });
+    return await ctx.prisma.createAccounting({
+      ...data,
+    });
   },
 
   async updateAccounting(parent, { id, data }, ctx: Context, info) {
