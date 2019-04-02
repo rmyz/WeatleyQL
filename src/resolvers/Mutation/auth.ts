@@ -8,7 +8,7 @@ export const auth = {
     const user = await ctx.prisma.createUser({ ...data, password });
 
     return {
-      token: jwt.sign({ user }, process.env.APP_SECRET),
+      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
       user,
     };
   },
@@ -21,7 +21,7 @@ export const auth = {
     if (!isValidPassword) throw new Error('Invalid password');
 
     return {
-      token: jwt.sign({ user }, process.env.APP_SECRET),
+      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
       user,
     };
   },
@@ -31,7 +31,7 @@ export const auth = {
     if (!customer) throw new Error(`No such user found for id: ${id}`);
 
     return {
-      token: jwt.sign({ customer }, process.env.APP_SECRET),
+      token: jwt.sign({ userId: customer.id }, process.env.APP_SECRET),
       customer,
     };
   },
