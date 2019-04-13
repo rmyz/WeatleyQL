@@ -1,4 +1,5 @@
-# import Accounting, AccountingCreateInput, AccountingUpdateInput, Activity, Booking, BookedRoom, Customer, Hotel, Order, Product, ProductOrdered, Report, Room, Service, User, UserCreateInput from "./generated/prisma.graphql";
+# import Accounting, AccountingCreateInput, AccountingUpdateInput, Activity, ActivityCreateInput, ActivityUpdateInput, Booking, BookingCreateInput, BookingUpdateInput, BookedRoom, Customer, CustomerCreateInput, CustomerUpdateInput, Hotel, HotelCreateInput, HotelUpdateInput, Order, OrderCreateInput, OrderUpdateInput, Product, ProductCreateInput, ProductUpdateInput, ProductOrdered, ProductOrderedCreateInput, ProductOrderedUpdateInput, Report, ReportCreateInput, ReportUpdateInput, Room, RoomCreateInput, RoomUpdateInput, Service, ServiceCreateInput, ServiceUpdateInput, User, UserCreateInput, UserUpdateInput from "./generated/prisma.graphql";
+
 type Query {
   accounting(id: ID!): Accounting!
   accountings: [Accounting!]!
@@ -37,8 +38,49 @@ type Mutation {
   updateAccounting(id: ID!, data: AccountingUpdateInput!): Accounting!
   deleteAccounting(id: ID!): Accounting!
 
-  # createActivity(newActivity: Activity!): Activity!
-  # modifyActivity(modifiedActivity: Activity!): Activity!
+  createActivity(data: ActivityCreateInput!): Activity!
+  updateActivity(id: ID!, data: ActivityUpdateInput!): Activity!
+  deleteActivity(id: ID!): Activity!
+
+  createBooking(data: BookingCreateInput!): Booking!
+  updateBooking(id: ID!, data: BookingUpdateInput!): Booking!
+  deleteBooking(id: ID!): Booking!
+
+  createCustomer(data: CustomerCreateInput!): Customer!
+  updateCustomer(id: ID!, data: CustomerUpdateInput!): Customer!
+  deleteCustomer(id: ID!): Customer!
+
+  createHotel(data: HotelCreateInput!): Hotel!
+  updateHotel(id: ID!, data: HotelUpdateInput!): Hotel!
+  deleteHotel(id: ID!): Hotel!
+
+  createOrder(data: OrderCreateInput!): Order!
+  updateOrder(id: ID!, data: OrderUpdateInput!): Order!
+  deleteOrder(id: ID!): Order!
+
+  createProduct(data: ProductCreateInput!): Product!
+  updateProduct(id: ID!, data: ProductUpdateInput!): Product!
+  deleteProduct(id: ID!): Product!
+
+  createProductOrdered(data: ProductOrderedCreateInput!): ProductOrdered!
+  updateProductOrdered(id: ID!, data: ProductOrderedUpdateInput!): ProductOrdered!
+  deleteProductOrdered(id: ID!): ProductOrdered!
+
+  createReport(data: ReportCreateInput!): Report!
+  updateReport(id: ID!, data: ReportUpdateInput!): Report!
+  deleteReport(id: ID!): Report!
+
+  createRoom(data: RoomCreateInput!): Room!
+  updateRoom(id: ID!, data: RoomUpdateInput!): Room!
+  deleteRoom(id: ID!): Room!
+
+  createService(data: ServiceCreateInput!): Service!
+  updateService(id: ID!, data: ServiceUpdateInput!): Service!
+  deleteService(id: ID!): Service!
+
+  createUser(data: UserCreateInput!): User!
+  updateUser(id: ID!, data: UserUpdateInput!): User!
+  deleteUser(id: ID!): User!
 }
 
 type AuthPayload {

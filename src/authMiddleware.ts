@@ -14,5 +14,29 @@ const isAuthenticated = async (resolve, parent, args, ctx: Context, info) => {
 
 export const authMiddleware = {
   Accounting: isAuthenticated,
-  Customer: isAuthenticated,
+  Activity: isAuthenticated,
+  Booking: isAuthenticated,
+  Order: isAuthenticated,
+  Product: isAuthenticated,
+  Report: isAuthenticated,
+  Room: isAuthenticated,
+  Service: isAuthenticated,
+  Query: {
+    hotel: isAuthenticated,
+    hotels: isAuthenticated,
+    user: isAuthenticated,
+    users: isAuthenticated,
+    customer: isAuthenticated,
+    customers: isAuthenticated,
+  },
+  Mutation: {
+    createHotel: isAuthenticated,
+    updateHotel: isAuthenticated,
+    deleteHotel: isAuthenticated,
+    updateUser: isAuthenticated,
+    deleteUser: isAuthenticated,
+    createCustomer: isAuthenticated,
+    updateCustomer: isAuthenticated,
+    deleteCustomer: isAuthenticated,
+  },
 };
