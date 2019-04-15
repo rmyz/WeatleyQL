@@ -1,0 +1,8 @@
+node_modules
+.vscode
+.editorconfig
+.eslintrc.js
+.gitignore
+.prettierignore
+.prettierrc
+docker-compose.yml

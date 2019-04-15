@@ -1,6 +1,7 @@
-endpoint: http://localhost:4466
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.prisma
 databaseType: document
+secret: ${env:PRISMA_MANAGEMENT_API_SECRET}
 
 generate:
   - generator: typescript-client
@@ -14,4 +15,3 @@ hooks:
     - graphql get-schema
     - prisma generate
 
-secret: W34tl3y

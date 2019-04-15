@@ -1,25 +1,17 @@
 FROM node:10.15.3-alpine AS base
 
-ADD . /app
+RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY yarn.lock .
 COPY package.json .
-
-FROM base AS dependencies
+COPY yarn.lock .
 
 RUN yarn install --production --non-interactive
 
-FROM base AS release
-
-ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
-
-COPY --from=dependencies /app/node_modules ./node_modules
-
 COPY . .
 
-EXPOSE 4000
+RUN chmod +x ./wait-for-it.sh
+RUN yarn global add graphql-cli
 
-CMD [ "yarn", "start" ]
+EXPOSE 4000
