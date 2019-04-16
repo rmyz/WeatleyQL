@@ -1,14 +1,21 @@
-const { GraphQLServer } = require('graphql-yoga');
+import { ApolloServer } from 'apollo-server';
+import { applyMiddleware } from 'graphql-middleware';
+import { importSchema } from 'graphql-import';
+import { makeExecutableSchema } from 'graphql-tools';
 
+import { authMiddleware } from './authMiddleware';
 import { prisma } from './generated/prisma-client';
 import resolvers from './resolvers';
-import { authMiddleware } from './authMiddleware';
 
-const server = new GraphQLServer({
-  typeDefs: './src/schema.graphql',
-  resolvers,
-  context: (request) => ({ ...request, prisma }),
-  middlewares: [authMiddleware],
+const typeDefs = importSchema('./src/schema.graphql');
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+const schemaWithMiddleware = applyMiddleware(schema, authMiddleware);
+
+const server = new ApolloServer({
+  schema: schemaWithMiddleware,
+  context: (req) => ({ ...req, prisma }),
 });
 
-server.start(() => console.log('Server is running on http://localhost:4000'));
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
