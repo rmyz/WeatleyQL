@@ -14,4 +14,3 @@ COPY . .
 RUN chmod +x ./wait-for-it.sh
 RUN yarn global add graphql-cli
 
-EXPOSE 4000

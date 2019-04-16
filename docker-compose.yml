@@ -3,7 +3,7 @@ services:
   weatleyapi:
     build: .
     ports:
-      - '4000:4000'
+      - '${PORT}:${PORT}'
     depends_on:
       - 'prisma'
     volumes:
