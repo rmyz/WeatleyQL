@@ -13,7 +13,7 @@ const schemaWithMiddleware = applyMiddleware(schema, authMiddleware);
 
 const server = new ApolloServer({
   schema: schemaWithMiddleware,
-  context: (req) => ({ ...req, prisma }),
+  context: async (req) => ({ ...req, prisma }),
 });
 
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
