@@ -10,7 +10,8 @@
     "build": "rimraf dist && tsc",
     "prettier": "prettier --config .prettierrc --write \"**/*.{ts,yml}\"",
     "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.{ts,yml}\"",
-    "prisma:deploy": "prisma deploy"
+    "prisma:deploy": "prisma deploy",
+    "prisma:token": "prisma token"
   },
   "dependencies": {
     "apollo-server": "2.4.8",
