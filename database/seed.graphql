@@ -23,8 +23,23 @@ mutation {
   ord2: createOrder(data: {finalPrice: 10.45, date: "2019-01-06", status: "delivered", customer: {connect: {email: "john@gmail.com"}}}) {
     id
   }
-  user1: createUser(data: {name: "Pere",surname: "LD", email: "pere@gmail.com", userType:"admin", hotel: {connect: {email: "thebay@gmail.com"}}})  {
+  # password for users is 123
+  user1: createUser(data: {name: "James",surname: "Jameson", email: "james@gmail.com", password:"$2a$10$/QFMIx87RflOcaLVoCJK8.IGjGx4ajZuHXUfQE5gvg6W69hbihsgG", userType:"Admin", hotel: {connect: {email: "thebay@gmail.com"}}})  {
     id
-    name
+  }
+  user2: createUser(data: {name: "Peter",surname: "Han", email: "peter@gmail.com", password:"$2a$10$/QFMIx87RflOcaLVoCJK8.IGjGx4ajZuHXUfQE5gvg6W69hbihsgG", userType:"Receptionist", hotel: {connect: {email: "thebay@gmail.com"}}})  {
+    id
+  }
+  pro1: createProduct(data: {name: "Coca-cola", price: 2, available: true, description: "Coca-cola drink", productType: "Drink", hotel: {connect: {email: "thebay@gmail.com"}}})  {
+    id
+  }
+  pro2: createProduct(data: {name: "Nestea", price: 1, available: false, description: "Nestea drink", productType: "Drink", hotel: {connect: {email: "thebay@gmail.com"}}})  {
+    id
+  }
+  rep1: createReport(data: {date: "2019-03-05", status: "seen", description:"bathroom is not clean", customer: {connect: {email:"john@gmail.com"}}})  {
+    id
+  }
+  rep2: createReport(data: {date: "2019-03-03", status: "pending", description:"bar is closed", customer: {connect: {email:"john@gmail.com"}}})  {
+    id
   }
 }
