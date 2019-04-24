@@ -12,5 +12,6 @@ RUN yarn install --production --non-interactive
 COPY . .
 
 RUN chmod +x ./wait-for-it.sh
-RUN yarn global add graphql-cli
+RUN chmod +x ./bootstrap.sh
 
+RUN yarn global add graphql-cli
