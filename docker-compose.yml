@@ -10,7 +10,7 @@ services:
       - .:/app
     command: ["./wait-for-it.sh", "prisma:4466", "--", "./bootstrap.sh"]
   prisma:
-    image: prismagraphql/prisma:1.34
+    image: prismagraphql/prisma:1.34.3
     restart: always
     ports:
       - '4466:4466'
